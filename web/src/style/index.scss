@@ -1,0 +1,251 @@
+// #nprogress .bar {
+//   background:#f00 !important; //自定义颜色
+// }
+
+#nav {
+  width: 1300px;
+  line-height: 40px;
+  margin: 0 auto;
+
+  a {
+    display: inline-block;
+    color: #555666;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 0 6px;
+    font-weight: bold;
+
+    &.router-link-exact-active {
+      border-bottom: 2px solid #E33E33;
+      color: #222226;
+      text-decoration: none;
+    }
+  }
+  .member{
+    float:right;
+    span{
+      display: inline-block;
+      margin:0 ;
+      padding:0 10px;
+    }
+  }
+  
+}
+
+.head_wrap {
+  background: linear-gradient(159deg, #5665b4, #5665b4 60%, #755f90);
+  background: #004383 url(./assets/images/banner.jpg) no-repeat center center;
+}
+
+.head {
+  width: 1300px;
+  margin: 0 auto;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  width: 1300px;
+  margin: 10px auto;
+
+  .sidebar {
+    width: 280px;
+    background: #fff;
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 20px;
+
+    .auth {
+      display: flex;
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+
+      .text {
+        flex: 1;
+        line-height: 30px;
+
+        b {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .info {
+      margin-top: 20px;
+      line-height: 26px;
+      color: #666;
+      span {
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+      }
+    }
+  }
+
+  .main_content {
+    float: left;
+    width: 1000px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 3px;
+
+    .artile_detail {
+      .title {
+        font-size: 22px;
+        line-height: 40px;
+      }
+
+      .desc {
+        color: #999;
+        line-height: 30px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .info {
+        padding: 20px;
+        line-height: 22px;
+        word-break: break-all;
+        min-height: 400px;
+      }
+    }
+    .ivu-list-item {
+      margin: 0 20px 20px;
+      border: 1px solid #e8eaec;
+      padding: 12px;
+      border-radius: 5px;
+      &:first-child {
+        margin: 50px 20px 20px;
+      }
+    }
+    // .ivu-list-item-action {
+    //   margin-left: 32px;
+    // }
+    .ivu-list-item:last-child {
+      border-bottom: 1px solid #e8eaec;
+    }
+  }
+
+  .list {
+    padding: 20px 10px;
+    background: #fff;
+    border-radius: 3px;
+
+    .ql-syntax {
+      background: #000;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    li {
+      border: 1px solid #ecf1f8;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      padding: 10px;
+      list-style: none;
+
+      a {
+        color: #5665b4;
+        text-decoration: none;
+        line-height: 40px;
+      }
+
+      p {
+        color: #999;
+        line-height: 22px;
+
+        &.time {
+          margin-top: 5px;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .message-commit {
+    width: 600px;
+    margin: 0 0 0 20px;
+
+    .message-item {
+      margin-bottom: 20px;
+
+      &:last-child {
+        // padding-left: 150px;
+
+        .ml20 {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+.footer{
+  line-height: 60px;
+  text-align: center;
+  background:none;
+}
+
+/* iview 样式设置 */
+.ivu-page{
+  text-align: center;
+  padding:50px 0;
+}
+
+/*
+  后台管理页面样式
+*/
+.header {
+  background: linear-gradient(159deg, #eb7216, #eb7216 60%, #f09f43);
+  height: 64px;
+  line-height: 64px;
+  color: #fff;
+  text-align: right;
+  padding: 0 20px;
+}
+.system_box {
+  display: flex;
+  flex: 1;
+  margin: 10px;
+  background: #fff;
+  color: #a8b3c4;
+  .system_side {
+    width: 240px;
+    padding: 18px 10px;
+    border-right: 1px solid #ecf1f8;
+
+    li {
+      padding: 7px 18px;
+      list-style: none;
+      img {
+        width: 16px;
+        vertical-align: sub;
+        margin-right: 6px;
+      }
+      &:hover,
+      &.active {
+        background: #f4f6fa;
+        color: #5f5c7f;
+        cursor: pointer;
+      }
+    }
+  }
+  .system_content {
+    flex: 1;
+    padding: 20px;
+  }
+}
+
+.ivu-avatar{
+  width: 50px !important;
+  height: 50px !important;
+  border: 1px solid #e8eaec !important;
+}
