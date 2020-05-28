@@ -23,7 +23,7 @@ https://github.com/dcq2016/koa2-node-blog
 ```
 - 可下载压缩包或node下载 
 ``` javascript
-`git clone https://github.com/dcq2016/koa2-node-blog.git`
+git clone https://github.com/dcq2016/koa2-node-blog.git
 ```
 ### 运行项目
 - 安装数据库存
