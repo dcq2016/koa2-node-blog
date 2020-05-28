@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理界面</title>
+    <style>
+        .page{ padding:20px;}
+        .content{ padding-top:20px;}
+        table{ width:100%; border-collapse:collapse; border: 1px solid #ddd; margin-top:20px;}
+        table th,table td{ line-height: 40px; border:1px solid #ddd; padding: 0 10px;}
+        .mask{ position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.8); z-index:8;}
+        .modify_dialog{ position:fixed; left:50%; top:50%; width:500px; height:auto; padding:20px; border:1px solid #ddd; border-radius:3px; background:#fff; transform:translate(-50%, -50%); z-index:9;}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <%- include('./include/top.ejs') %>
+
+        <div class="content">
+            <a href="?act=addshow">新增</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>链接</th>
+                        <th width="140">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<banner.length; i++) { %>
+                    <tr>
+                        <td><%= banner[i].title %></td>
+                        <td><%= banner[i].description %></td>
+                        <td><%= banner[i].href %></td>
+                        <td><a href="?act=mod&id=<%= banner[i].ID %>">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?act=del&id=<%= banner[i].ID %>">删除</a></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <% if (typeof modifyData != 'undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=modify&id=<%= modifyData.ID %>" method="post">
+            标题：<input type="text" name="title" value="<%= modifyData.title %>"> <br>
+            描述：<textarea name="description" cols="60" rows="8"><%= modifyData.description %></textarea><br>
+            链接：<input type="text"  name="href" value="<%= modifyData.href %>"> <br>
+            <input type="submit" value="修改">
+            <a href="/admin/banner">取消修改</a>
+        </form>
+    </div>
+    <% } %>
+    <% if (typeof showAddBox !='undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=add" method="post">
+            标题：<input type="text" name="title"> <br>
+            描述：<textarea name="description" cols="60" rows="8"></textarea><br>
+            链接：<input type="text" name="href"> <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <% } %>
+</body>
+</html>

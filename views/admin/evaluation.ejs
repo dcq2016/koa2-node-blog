@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理界面</title>
+    <style>
+        .page{ padding:20px;}
+        .content{ padding-top:20px;}
+        table{ width:100%; border-collapse:collapse; border: 1px solid #ddd; margin-top:20px;}
+        table th,table td{ line-height: 40px; border:1px solid #ddd; padding: 0 10px;}
+        .mask{ position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.8); z-index:8;}
+        .modify_dialog{ position:fixed; left:50%; top:50%; width:500px; height:auto; padding:20px; border:1px solid #ddd; border-radius:3px; background:#fff; transform:translate(-50%, -50%); z-index:9;}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <%- include('./include/top.ejs') %>
+
+        <div class="content">
+            <a href="?act=addshow">新增</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>图片</th>
+                        <th width="140">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<list.length; i++) { %>
+                    <tr>
+                        <td><%= list[i].title %></td>
+                        <td><%= list[i].description %></td>
+                        <td><% if (list[i].src) { %><img src="/upload/<%= list[i].src %>" style=" width:100px; height:100px;" /><% } %></td>
+                        <td><a href="?act=mod&id=<%= list[i].ID %>">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?act=del&id=<%= list[i].ID %>">删除</a></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <% if (typeof modifyData != 'undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=modify&id=<%= modifyData.ID %>" method="post" enctype="multipart/form-data">
+            标题：<input type="text" name="title" value="<%= modifyData.title %>"> <br>
+            描述：<textarea name="description" cols="60" rows="8"><%= modifyData.description %></textarea><br>
+            图片：<input type="file" name="src"> <br>
+            <input type="submit" value="修改">
+            <a href="/admin/evaluation">取消修改</a>
+        </form>
+    </div>
+    <% } %>
+    <% if (typeof showAddBox !='undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=add" method="post" enctype="multipart/form-data">
+            标题：<input type="text" name="title"> <br>
+            描述：<textarea name="description" cols="60" rows="8"></textarea><br>
+            图片：<input type="file" name="src"> <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <% } %>
+</body>
+</html>

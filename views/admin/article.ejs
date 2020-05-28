@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/common.js"></script>
+    <title>用户管理界面</title>
+    <style>
+        .page{ padding:20px;}
+        .content{ padding-top:20px;}
+        table{ width:100%; border-collapse:collapse; border: 1px solid #ddd; margin-top:20px;}
+        table th,table td{ line-height: 40px; border:1px solid #ddd; padding: 0 10px;}
+        .mask{ position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.8); z-index:8;}
+        .modify_dialog{ position:fixed; left:50%; top:50%; width:800px; height:auto; max-height:700px; overflow-y:scroll; padding:20px; border:1px solid #ddd; border-radius:3px; background:#fff; transform:translate(-50%, -50%); z-index:9;}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <%- include('./include/top.ejs') %>
+
+        <div class="content">
+            
+            <a href="?act=addshow">新增</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>创建时间</th>
+                        <th>创建时间</th>
+                        <th width="140">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<banner.length; i++) { %>
+                    <tr>
+                        <td><%= banner[i].title %></td>
+                        <td><%= banner[i].description %></td>
+                        <td><%= banner[i].createtime %></td>
+                        <td><%= banner[i].m %></td>
+                        <td><a href="?act=mod&id=<%= banner[i].ID %>">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?act=del&id=<%= banner[i].ID %>">删除</a></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <% if (typeof modifyData != 'undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=modify&id=<%= modifyData.ID %>" method="post" onsubmit="return checkModifyForm()">
+            标题：<input type="text" name="title" value="<%= modifyData.title %>"> <br>
+            描述：<textarea name="description" cols="60" rows="8"><%= modifyData.description %></textarea><br>
+            内容：<script id="m_editor" type="text/plain" style="width:750px;height:300px;"></script><br />
+            <input type="hidden" name="content" id="m_content" value="<%= modifyData.content %>" />
+            <input type="submit" value="修改">
+            <a href="/admin/article">取消修改</a>
+        </form>
+    </div>
+    <% } %>
+    <% if (typeof showAddBox !='undefined') { %>
+    <div class="mask"></div>
+    <div class="modify_dialog">
+        <form action="?act=add" method="post" onsubmit="return checkForm()">
+            标题：<input type="text" name="title"> <br>
+            描述：<textarea name="description" cols="60" rows="8"></textarea><br>
+            内容：<script id="editor" type="text/plain" style="width:750px;height:300px;"></script><br />
+            <input type="hidden" name="content" id="content" />
+            <input type="submit" value="添加">
+            <a href="/admin/article">取消添加</a>
+        </form>
+    </div>
+    <% } %>
+    <script type="text/javascript">
+        const ue = UE.getEditor('editor');
+        const mUe = UE.getEditor('m_editor');
+        function checkForm() {
+            var content = document.getElementById('content');
+            content.value = UE.getEditor('editor').getContent();
+
+            return true;
+        }
+        function checkModifyForm() {
+            var content = document.getElementById('m_content');
+            content.value = UE.getEditor('m_editor').getContent();
+
+            return true;
+        }
+        if (typeof modifyData != 'undefined') {
+            UE.getEditor('m_editor').setContent(modifyData.content, true);
+        }
+        
+    </script>
+</body>
+</html>

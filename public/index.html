@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        *{ margin:0; padding:0;}
+        .list{ width:500px; margin:100px auto;}
+        .list li{ border:1px solid #ddd; border-radius: 5px; margin-bottom:20px; padding:10px; list-style: none;}
+    </style>
+    <script src="./javascripts/ajax.js"></script>
+    <script>
+        window.onload = function() {
+            var oList = document.querySelector('.list');
+            var oUl = oList.getElementsByTagName('ul')[0];
+            var str = '';
+            console.log(oUl.innerHTML);
+
+            ajax({
+                type: 'get',
+                url: '/api/v1/get_banner', 
+                success: function(res) {
+                    console.log(typeof res);
+                    var res = JSON.parse(res);
+                    if (res.isSuccess) {
+                        if (res.data.length > 0) {
+                            for(var i = 0; i<res.data.length; i++) {
+                                str +=`<li><h3><a href="${res.data[i].href}" target="_blank">${res.data[i].title}</a></h3><p>${res.data[i].description}</p></li>`;
+                            }
+                            oUl.innerHTML = str;
+                        }
+                    } else {
+                        alert(res.message);
+                    }
+                    
+                }, 
+                error: function(err) {
+                    console.log(err);   
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="list">
+        <ul>
+            <!-- <li>
+                <h3><a href="#" target="_blank">这是描述内容这是描述内容这是描述内容</a></h3>
+                <p>这是描述内容这是描述内容这是描述内容这是描述内容这是描述内容</p>
+            </li>
+            <li>
+                <h3><a href="#" target="_blank">这是描述内容这是描述内容这是描述内容</a></h3>
+                <p>这是描述内容这是描述内容这是描述内容这是描述内容这是描述内容</p>
+            </li>
+            <li>
+                <h3><a href="#" target="_blank">这是描述内容这是描述内容这是描述内容</a></h3>
+                <p>这是描述内容这是描述内容这是描述内容这是描述内容这是描述内容</p>
+            </li> -->
+        </ul>
+    </div>
+</body>
+</html>

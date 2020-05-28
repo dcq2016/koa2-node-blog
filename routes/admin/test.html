@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var oDate = new Date().getTime() + '';
+        console.log(typeof oDate)
+        var date = new Date(parseInt(oDate));
+        var time = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() +'  '+ date.getHours()+':'+ date.getMinutes() +':'+ date.getSeconds();
+        alert(time)
+
+        function toDate(getTime) {
+            var date = new Date(parseInt(getTime));
+            var time = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() +' '+ date.getHours()+':'+ date.getMinutes() +':'+ date.getSeconds();
+            return time;
+        }
+        console.log(toDate(1588241764538));
+        let originalname = "123.df.jpg";
+        let a = originalname.substr(originalname.lastIndexOf('.'));
+        console.log(a)
+    </script>
+    
+</head>
+
+<body>
+    <div style=" border-radius:5px"></div>
+</body>
+</html>
