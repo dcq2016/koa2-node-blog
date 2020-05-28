@@ -16,7 +16,7 @@ const app = new Koa()
 
 
 
-const admin = require('./routes/admin/index')
+// const admin = require('./routes/admin/index')
 const index = require('./routes/index')
 
 // error handler
@@ -79,7 +79,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(admin.routes(), admin.allowedMethods())
+// app.use(admin.routes(), admin.allowedMethods())
 app.use(index.routes(), index.allowedMethods())
 
 // error-handling
