@@ -1,25 +1,30 @@
 ### 说明
  - node+koa2+mysql实现的个人博客
- - 若要运行该项目请先确保本地已经安装过mysql
- - 适合于新手和有经验的朋友nodejs,koa
+ - 若要运行该项目请先确保本地已经安装过mysql、node环境
+ - 适合于新手和有经验的童鞋nodejs，koa
 
 ### 技术栈
 - 服务端：Nodejs，框架Koa2
 - 前端和后台模板：Vue.js  前台UI框架 view-design
 - 数据库：MySQL
-- 完整包含技术：Node.js, Koa2, MySQL, JWT; Vue.js.
+- 完整包含技术：Node.js、 Koa2、 MySQL、 JWT、 Vue.js.
 
 - 项目说明
     - 前后端分离，服务端采用koa2和nodejs做接口，前端和后台用vue
     - 文章列表模块，用户评论功能，用户评论回复功能，但需要先注册登录
     - 注册模块需要上传用户头像
-    - 对网站有什么建议可使用，留言功能
+    - 对网站技术有什么疑问或建议可留言告诉我
     - 网站持续优化中...
 
 ### 下载项目
-- git地址： `https://github.com/dcq2016/koa2-node-blog`
-- 可下载压缩包或node下载 `git clone https://github.com/dcq2016/koa2-node-blog.git`
-
+- git地址： 
+``` javascript
+https://github.com/dcq2016/koa2-node-blog
+```
+- 可下载压缩包或node下载 
+``` javascript
+`git clone https://github.com/dcq2016/koa2-node-blog.git`
+```
 ### 运行项目
 - 安装数据库存
     - 安装mysql数据库(此处省略1000字)
